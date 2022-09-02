@@ -1,0 +1,35 @@
+{
+  "name": "backend-node",
+  "version": "0.1.0",
+  "description": "A Telegram chat (First take)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "npx nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JesusPlasencia/websocket-mongodb.git"
+  },
+  "keywords": [
+    "javascript",
+    "chat",
+    "server",
+    "js",
+    "telegram"
+  ],
+  "author": "Jesus <jesusplasencia2508@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JesusPlasencia/websocket-mongodb/issues"
+  },
+  "homepage": "https://github.com/JesusPlasencia/websocket-mongodb#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "chalk": "^5.0.1",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
