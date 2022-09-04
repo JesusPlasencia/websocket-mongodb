@@ -1,5 +1,6 @@
+const store = require("./store");
+
 function addMessage(user, message) {
-  //
   return new Promise((res, rej) => {
     if (!user || !message) {
       console.error("[messageController] There is no message or user");
@@ -11,9 +12,15 @@ function addMessage(user, message) {
       message,
       date: new Date(),
     };
-    console.log(fullMessage);
+    store.add(fullMessage);
     res(fullMessage);
   });
 }
 
-module.exports = { addMessage };
+function getMessages() {
+  return new Promise((res, rej) => {
+    res(store.list());
+  });
+}
+
+module.exports = { addMessage, getMessages };
