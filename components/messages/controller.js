@@ -17,10 +17,41 @@ function addMessage(user, message) {
   });
 }
 
-function getMessages() {
+function getMessages(filterUser) {
   return new Promise((res, rej) => {
-    res(store.list());
+    res(store.list(filterUser));
   });
 }
 
-module.exports = { addMessage, getMessages };
+function updateMessage(id, message) {
+  return new Promise(async (res, rej) => {
+    if (!id || !message) {
+      rej("Message or Id not Found");
+      return false;
+    }
+    const response = await store.update(id, message);
+    res(response);
+  });
+}
+
+function deleteMessage(id) {
+  return new Promise(async (res, rej) => {
+    if (!id) {
+      rej("Id Not Found");
+      return false;
+    }
+    await store
+      .remove(id)
+      .then(res())
+      .catch((error) => {
+        rej(error);
+      });
+  });
+}
+
+module.exports = {
+  addMessage,
+  getMessages,
+  updateMessage,
+  deleteMessage,
+};
