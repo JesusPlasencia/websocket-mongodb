@@ -4,7 +4,9 @@ const bodyParser = require("body-parser");
 const config = require("./config/config");
 const db = require("./config/db");
 
+// Connecting DB
 db(config.URI);
+
 // Creating the Router
 const router = require("./network/routes");
 
