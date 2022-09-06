@@ -21,6 +21,9 @@ const MySchema = new Schema({
     type: Date,
     required: true,
   },
+  file: {
+    type: String,
+  },
 });
 
 const model = mongoose.model(MESSAGE_TABLE, MySchema);

@@ -1,19 +1,28 @@
 const store = require("./store");
+const socket = require("../../socket").socket;
 
-function addMessage(chat, user, message) {
+function addMessage(chat, user, message, file) {
   return new Promise((res, rej) => {
     if (!chat || !user || !message) {
       console.error("[messageController] There is no message or user");
       rej("No Data Found");
       return false;
     }
+
+    let fileUrl = "";
+    if (file) {
+      fileUrl = "http://localhost:3000/app/files/" + file.filename;
+    }
+
     const fullMessage = {
       chat,
       user,
       message,
       date: new Date(),
+      file: fileUrl,
     };
     store.add(fullMessage);
+    socket.io.emit("message", fullMessage);
     res(fullMessage);
   });
 }
